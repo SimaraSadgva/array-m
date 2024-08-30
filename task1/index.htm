@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .adSalary {
+            max-width: 300px;
+            margin: 70px auto;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px 0;
+        }
+        .results {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="adSalary">
+        <h1>İşçilər və maaşları</h1>
+        <input type="number" id="salaryInp" placeholder="Enter salary"/>
+        <button onclick="salary()">✔</button>
+        <div class="results" id="results"></div>
+    </div>
+
+    <script>
+        const arr = [
+            { ad: 'Elvin', sex: 'm', salary: 4500 },
+            { ad: 'Xəzər', sex: 'm', salary: 4270 },
+            { ad: 'Elmir', sex: 'm', salary: 3550 },
+            { ad: 'İsmixan', sex: 'm', salary: 2700 },
+            { ad: 'Günel', sex: 'f', salary: 1740 },
+            { ad: 'Günəş', sex: 'f', salary: 2400 },
+            { ad: 'Fidan', sex: 'f', salary: 820 },
+            { ad: 'Rəvan', sex: 'm', salary: 700 },
+            { ad: 'Kənan', sex: 'm', salary: 2340 },
+            { ad: 'Azər', sex: 'm', salary: 1400 },
+            { ad: 'Musa', sex: 'm', salary: 2350 },
+            { ad: 'Vahid', sex: 'm', salary: 3340 },
+            { ad: 'David', sex: 'm', salary: 4700 },
+            { ad: 'Elcan', sex: 'm', salary: 1100 },
+            { ad: 'Yasəmən', sex: 'f', salary: 900 }
+        ];
+
+        function salary() {
+            const deyer = parseInt(salaryInp.value , 10);
+
+            const results = arr
+                .filter(person => person.salary > deyer)
+                .map(person => `${person.ad}: ${person.salary} </br>`)
+                .join('\n');
+
+            document.getElementById('results').innerHTML = results || 'No found.';
+        }
+    </script>
+</body>
+</html>
+
